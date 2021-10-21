@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "my-libtwo": {
+      "projectType": "library",
+      "root": "projects/my-libtwo",
+      "sourceRoot": "projects/my-libtwo/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/my-libtwo/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/my-libtwo/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/my-libtwo/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/my-libtwo/src/test.ts",
+            "tsConfig": "projects/my-libtwo/tsconfig.spec.json",
+            "karmaConfig": "projects/my-libtwo/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "my-libtwo"
+}
